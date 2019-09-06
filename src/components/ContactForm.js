@@ -81,34 +81,34 @@ const ContactForm = () => {
   const handleSubmit = async evt => {
     evt.preventDefault();
     if (errors.name || errors.email || errors.subject || errors.message) return;
-    // fetch('https://p8d2w8tkz4.execute-api.us-east-1.amazonaws.com/send-email/submit', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     name: values.name,
-    //     sender: values.email,
-    //     subject: values.subject,
-    //     body: values.message
-    //   })
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     setErrors({
-    //       name: false,
-    //       email: false,
-    //       subject: false,
-    //       message: false
-    //     })
-    //     setValues({
-    //       name: '',
-    //       email: '',
-    //       subject: '',
-    //       message: ''
-    //     })
-    //     setSentStatus( true)
-    //     console.log('Successfully Sent: ', data)
-    //   })
-    //   .catch(err => console.error('Failed to send: ', err))
-    setSentStatus( true)
+    fetch('https://p8d2w8tkz4.execute-api.us-east-1.amazonaws.com/send-email/submit', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: values.name,
+        sender: values.email,
+        subject: values.subject,
+        body: values.message
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        setErrors({
+          name: false,
+          email: false,
+          subject: false,
+          message: false
+        })
+        setValues({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        })
+        setSentStatus( true)
+        console.log('Successfully Sent: ', data)
+      })
+      .catch(err => console.error('Failed to send: ', err))
+    // setSentStatus( true)
   }
 
   const handleClose = (event, reason) => {
@@ -130,8 +130,6 @@ const ContactForm = () => {
             <TextField
               required
               fullWidth
-              // error={errors.name}
-              // helperText={errors.name ? 'Please fill out your name' : ''}
               label="Full Name"
               name="name"
               value={values.name}
@@ -146,7 +144,6 @@ const ContactForm = () => {
               id="outlined-email-input"
               label="Email"
               error={errors.email}
-              // helperText={errors.email ? 'Please fill out your email' : ''}
               type="email"
               name="email"
               autoComplete="email"
@@ -162,7 +159,6 @@ const ContactForm = () => {
             fullWidth
             label="Subject"
             error={errors.subject}
-            // helperText={errors.subject ? 'Please fill out the subject' : ''}
             name="subject"
             autoComplete="email"
             margin="normal"
