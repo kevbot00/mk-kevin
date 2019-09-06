@@ -1,0 +1,8 @@
+{
+  "environment": {
+    "SES_REGION": "us-east-1",
+    "FROM_NAME": "Contact Form",
+    "FROM_EMAIL": "kevdev000@gmail.com",
+    "TO_EMAIL": "kevdev000@gmail.com"
+  }
+}
